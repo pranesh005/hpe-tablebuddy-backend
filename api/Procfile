@@ -1,1 +1,0 @@
-web: uvicorn __init__:app
