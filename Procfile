@@ -1,0 +1,1 @@
+web: cd api && uvicorn __init__:app
