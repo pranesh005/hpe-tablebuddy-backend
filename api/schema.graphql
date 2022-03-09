@@ -1,0 +1,29 @@
+schema {
+    query: Query
+}
+
+type Student {
+    id: Int!
+    name: String!
+    email: String!
+    section_id: Int!
+    password:String!
+}
+
+type StudentResult {
+    success: Boolean!
+    errors: [String]
+    student: Student
+}
+
+type StudentsResult {
+    success: Boolean!
+    errors: [String]
+    students: [Student]
+}
+
+
+type Query {
+    listStudents: StudentsResult!
+    getStudent(id: Int!): StudentResult!
+}
