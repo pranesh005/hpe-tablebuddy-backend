@@ -1,3 +1,4 @@
+from asyncio import streams
 from .models import Student
 from ariadne import convert_kwargs_to_snake_case
 
@@ -17,9 +18,9 @@ def listStudents_resolver(obj, info):
     return payload
 
 @convert_kwargs_to_snake_case
-def getStudent_resolver(obj, info, id):
+def getStudent_resolver(obj, info, email,password):
     try:
-        student = Student.query.get(id)
+        student = Student.query.get(email,password)
         payload = {
             "success": True,
             "student": student.to_dict()

@@ -25,5 +25,5 @@ type StudentsResult {
 
 type Query {
     listStudents: StudentsResult!
-    getStudent(id: Int!): StudentResult!
+    getStudent(email:String!,password:String!): StudentResult!
 }
