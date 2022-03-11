@@ -1,5 +1,6 @@
 schema {
     query: Query
+    mutation: Mutation
 }
 
 type Student {
@@ -15,6 +16,11 @@ type StudentResult {
     errors: [String]
     student: Student
 }
+type CommonMessage{
+    success:Boolean!
+    errors:[String]
+    message: String!
+}
 
 type StudentsResult {
     success: Boolean!
@@ -22,7 +28,9 @@ type StudentsResult {
     students: [Student]
 }
 
-
+type Mutation{
+    addStudent(id:Int!,name:String!,email:String!,section_id:Int!,password:String!): CommonMessage!
+}
 type Query {
     listStudents: StudentsResult!
     getStudent(email:String!,password:String!): StudentResult!
