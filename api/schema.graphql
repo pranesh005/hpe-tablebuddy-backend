@@ -11,11 +11,31 @@ type Student {
     password:String!
 }
 
+
+type TimeTable{
+    id:Int!
+    std:String!
+    section:String!
+    day:String!
+    period_1:String!
+    period_2:String!
+    period_3:String!
+    period_4:String!
+    period_5:String!
+    period_6:String!
+}
 type StudentResult {
     success: Boolean!
     errors: [String]
     student: Student
 }
+type TimeTableResult{
+    success: Boolean!
+    errors: [String]
+    timetable: [TimeTable]
+}
+
+
 type CommonMessage{
     success:Boolean!
     errors:[String]
@@ -27,11 +47,12 @@ type StudentsResult {
     errors: [String]
     students: [Student]
 }
-
 type Mutation{
-    addStudent(id:Int!,name:String!,email:String!,section_id:Int!,password:String!): CommonMessage!
+    addStudent(name:String!,email:String!,password:String!,section_id:Int!): CommonMessage!
+    # createTimeTable(objects:[..TimeTable!]!):CommonMessage!
 }
 type Query {
     listStudents: StudentsResult!
     getStudent(email:String!,password:String!): StudentResult!
+    getTimeTable(std:String!,section:String!):TimeTableResult!
 }

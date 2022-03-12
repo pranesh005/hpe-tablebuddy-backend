@@ -3,15 +3,16 @@ from ariadne import load_schema_from_path, make_executable_schema, \
     graphql_sync, snake_case_fallback_resolvers, ObjectType
 from ariadne.constants import PLAYGROUND_HTML
 from flask import request, jsonify
-from api.queries import listStudents_resolver,getStudent_resolver,addStudent_resolver
+from api.queries import listStudents_resolver,getStudent_resolver,addStudent_resolver,createTimeTable_resolver,getTimeTable_resolver
 
 query = ObjectType("Query")
 mutation=ObjectType("Mutation")
 query.set_field("listStudents", listStudents_resolver)
 query.set_field("getStudent", getStudent_resolver)
+query.set_field("getTimeTable",getTimeTable_resolver)
 # query.set_field("addStudent", addStudent_resolver)
 mutation.set_field("addStudent", addStudent_resolver)
-
+# mutation.set_field("createTimeTable",createTimeTable_resolver)
 
 type_defs = load_schema_from_path("schema.graphql")
 schema = make_executable_schema(
