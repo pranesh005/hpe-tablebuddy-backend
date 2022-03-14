@@ -35,7 +35,11 @@ type TimeTableResult{
     errors: [String]
     timetable: [TimeTable]
 }
-
+type TeacherTimeTableResult{
+    success: Boolean!
+    errors: [String]
+    timetable: [[String]]
+}
 
 type CommonMessage{
     success:Boolean!
@@ -57,4 +61,5 @@ type Query {
     listStudents: StudentsResult!
     getStudent(email:String!,password:String!): StudentResult!
     getTimeTable(std:String!,section:String!):TimeTableResult!
+    getTeacherTimeTable(std:String!,subject:String!):TeacherTimeTableResult!
 }
